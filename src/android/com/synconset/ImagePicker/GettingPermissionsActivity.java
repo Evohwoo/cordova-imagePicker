@@ -20,8 +20,8 @@ public class GettingPermissionsActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         builder = new AlertDialog.Builder(this);
-        builder.setTitle("Attention");
-        builder.setMessage("Grant Storage Permission");
+        builder.setTitle("Achtung");
+        builder.setMessage("Um die Funktion nutzen zu können, wird der Zugriff auf den Speicher benötigt.");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -46,13 +46,13 @@ public class GettingPermissionsActivity extends Activity {
                 }
             }
         });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 Toast.makeText(
                     GettingPermissionsActivity.this,
-                    "Sorry, we can't help you if no Storage Permission",
+                    "Um die Funktion nutzen zu können, wird der Zugriff auf den Speicher benötigt.",
                     Toast.LENGTH_SHORT
                 ).show();
                 GettingPermissionsActivity.this.finish();
@@ -67,18 +67,18 @@ public class GettingPermissionsActivity extends Activity {
         if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(
                 GettingPermissionsActivity.this,
-                "Thank you. Please go on",
+                "Die Funktion kann nun verwendet werden.",
                 Toast.LENGTH_SHORT
             ).show();
             GettingPermissionsActivity.this.finish();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.show();
-            builder.setTitle("Attention");
-            builder.setMessage("Grant Storage Permission");
+            builder.setTitle("Achtung");
+            builder.setMessage("Um die Funktion nutzen zu können, wird der Zugriff auf den Speicher benötigt.");
             builder.setCancelable(false);
             builder.setNegativeButton(
-                    "NO",
+                    "Abbrechen",
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -99,10 +99,10 @@ public class GettingPermissionsActivity extends Activity {
                                     dialog.dismiss();
                                     AlertDialog.Builder builder = new AlertDialog.Builder(GettingPermissionsActivity.this);
                                     builder.show();
-                                    builder.setTitle("Attention");
-                                    builder.setMessage("Sorry, we can't help you if no Storage Permission");
+                                    builder.setTitle("Achtung");
+                                    builder.setMessage("Um die Funktion nutzen zu können, wird der Zugriff auf den Speicher benötigt.");
                                     builder.setCancelable(false);
-                                    builder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+                                    builder.setNeutralButton("Schließen", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int i) {
                                             dialog.dismiss();
